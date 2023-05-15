@@ -15,7 +15,7 @@ Drawbacks: -> We require the array to be sorted. If the array is not sorted, we 
 
 def binarsearch(n,l,r,f):
     # loop runs until the condition satisfied i.e,,(l<=r)
-    while l <= r:
+    if r>= 1:
         # getting mid index value of an array
         mid = (l + r)//2
         # condition 1 : if element found at mid index then return mid
@@ -24,9 +24,11 @@ def binarsearch(n,l,r,f):
         # condition 2: if element is less than the mid element then set l to mid+1
         elif n[mid] < f:
             l = mid + 1
+            return binarsearch(n,l,r,f)   # 1: to run Recursively
         # condition 3: if element is greater than the mid element then set r to mid-1
         else:
             r = mid - 1
+            return binarsearch(n,l,r,f)   # 2: To run recursively
     # if element not found in list returns -1
     return -1
 
